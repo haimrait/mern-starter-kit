@@ -6,26 +6,26 @@ import { Link } from "react-router-dom";
 import { deletePost, addLike, removeLike } from "../../actions/postActions";
 
 class PostItem extends Component {
-  onDeleteClick(id) {
+  onDeleteClick = id => {
     this.props.deletePost(id);
-  }
+  };
 
-  onLikeClick(id) {
+  onLikeClick = id => {
     this.props.addLike(id);
-  }
+  };
 
-  onUnLikeClick(id) {
+  onUnLikeClick = id => {
     this.props.removeLike(id);
-  }
+  };
 
-  findUserLike(likes) {
+  findUserLike = likes => {
     const { auth } = this.props;
     if (likes.filter(like => like.user === auth.user.id).length > 0) {
       return true;
     } else {
       return false;
     }
-  }
+  };
 
   render() {
     const { post, auth, showActions } = this.props;
@@ -48,7 +48,9 @@ class PostItem extends Component {
             {showActions ? (
               <span>
                 <button
-                  onClick={this.onLikeClick.bind(this, post._id)}
+                  onClick={() => {
+                    this.onLikeClick(post._id);
+                  }}
                   type="button"
                   className="btn btn-light mr-1"
                 >
@@ -60,7 +62,9 @@ class PostItem extends Component {
                   <span className="badge badge-light">{post.likes.length}</span>
                 </button>
                 <button
-                  onClick={this.onUnLikeClick.bind(this, post._id)}
+                  onClick={() => {
+                    this.onUnLikeClick(post._id);
+                  }}
                   type="button"
                   className="btn btn-light mr-1"
                 >
@@ -71,7 +75,9 @@ class PostItem extends Component {
                 </Link>
                 {post.user === auth.user.id ? (
                   <button
-                    onClick={this.onDeleteClick.bind(this, post._id)}
+                    onClick={() => {
+                      this.onDeleteClick(post._id);
+                    }}
                     type="button"
                     className="btn btn-danger mr-1"
                   >
