@@ -48,7 +48,9 @@ class PostItem extends Component {
             {showActions ? (
               <span>
                 <button
-                  onClick={this.onLikeClick(post._id)}
+                  onClick={() => {
+                    this.onLikeClick(post._id);
+                  }}
                   type="button"
                   className="btn btn-light mr-1"
                 >
@@ -60,7 +62,9 @@ class PostItem extends Component {
                   <span className="badge badge-light">{post.likes.length}</span>
                 </button>
                 <button
-                  onClick={this.onUnLikeClick(post._id)}
+                  onClick={() => {
+                    this.onUnLikeClick(post._id);
+                  }}
                   type="button"
                   className="btn btn-light mr-1"
                 >
@@ -71,7 +75,9 @@ class PostItem extends Component {
                 </Link>
                 {post.user === auth.user.id ? (
                   <button
-                    onClick={this.onDeleteClick(post._id)}
+                    onClick={() => {
+                      this.onDeleteClick(post._id);
+                    }}
                     type="button"
                     className="btn btn-danger mr-1"
                   >

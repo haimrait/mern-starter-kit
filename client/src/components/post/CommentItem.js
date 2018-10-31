@@ -28,7 +28,9 @@ class CommentItem extends Component {
             <p className="lead">{comment.text}</p>
             {comment.user === auth.user.id ? (
               <button
-                onClick={this.onDeleteClick(postId, comment._id)}
+                onClick={() => {
+                  this.onDeleteClick(postId, comment._id);
+                }}
                 type="button"
                 className="btn btn-danger mr-1"
               >
