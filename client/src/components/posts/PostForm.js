@@ -11,9 +11,6 @@ class PostForm extends Component {
       text: "",
       errors: {}
     };
-
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,7 +19,7 @@ class PostForm extends Component {
     }
   }
 
-  onSubmit(e) {
+  onSubmit = e => {
     e.preventDefault();
 
     const { user } = this.props.auth;
@@ -34,11 +31,11 @@ class PostForm extends Component {
 
     this.props.addPost(newPost);
     this.setState({ text: "" });
-  }
+  };
 
-  onChange(e) {
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-  }
+  };
   render() {
     const { errors } = this.state;
 
