@@ -31,7 +31,6 @@ class Login extends Component {
   }
 
   onSubmit = e => {
-    debugger;
     e.preventDefault();
 
     const userData = {

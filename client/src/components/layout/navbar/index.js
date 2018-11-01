@@ -33,8 +33,9 @@ class Navbar extends Component {
           </Link>
         </Col>
         <Col span={2}>
-          <Link className="nav-link1" to=" ">
+          <Link className="nav-link1" to=" " onClick={this.onLogoutClick}>
             <Avatar
+              size={"small"}
               src={user.avatar}
               alt={user.name}
               title="You must have a Gravatar connected to your email to display an image"
