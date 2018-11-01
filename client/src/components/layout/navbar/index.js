@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Layout, Col, Row } from "antd";
+import { Layout, Col, Row, Avatar } from "antd";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../../actions/authActions";
@@ -22,7 +22,7 @@ class Navbar extends Component {
 
     const authLinks = (
       <React.Fragment>
-        <Col span={1} offset={18}>
+        <Col span={1} offset={17}>
           <Link className="nav-link1" to="/feed">
             Post Feed
           </Link>
@@ -32,13 +32,11 @@ class Navbar extends Component {
             Dashboard
           </Link>
         </Col>
-        <Col span={1}>
+        <Col span={2}>
           <Link className="nav-link1" to=" ">
-            <img
-              className="rounded-circle"
+            <Avatar
               src={user.avatar}
               alt={user.name}
-              style={{ width: "25px", marginRight: "5px" }}
               title="You must have a Gravatar connected to your email to display an image"
             />{" "}
             Logout
