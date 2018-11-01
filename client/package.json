@@ -29,7 +29,6 @@
   "proxy": "http://localhost:5000",
   "devDependencies": {
     "node-sass": "^4.9.4",
-    "react-app-rewire-css-modules": "codebandits/react-app-rewire-css-modules",
     "sass-loader": "^7.1.0"
   },
   "browserslist": [
