@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { Row, Col, Button } from "antd";
@@ -50,7 +49,7 @@ class Landing extends Component {
               sm={{ span: 4, offset: 0 }}
               xs={{ span: 6, offset: 0 }}
             >
-              <Button to="/login" size={"large"}>
+              <Button href="/login" size={"large"}>
                 Login
               </Button>
             </Col>
