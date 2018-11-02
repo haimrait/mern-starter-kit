@@ -35,8 +35,18 @@ body {
   line-height: 1.2;
 }
 
+.display-41 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
 .mb-41 {
   margin-bottom: 1.5rem;
+}
+
+.mb-21 {
+  margin-bottom: 0.5rem;
 }
 
 .lead1 {
@@ -54,4 +64,17 @@ body {
 
 .nav-link1:link {
   text-decoration: none;
+}
+
+.submit-btn {
+  width: 100%;
+}
+
+.app {
+  background-color: #fff;
+}
+
+.content {
+  width: 1024px;
+  margin: 24px auto;
 }

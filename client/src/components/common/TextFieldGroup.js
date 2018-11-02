@@ -1,6 +1,8 @@
 import React from "react";
-import classnames from "classnames";
 import PropTypes from "prop-types";
+import { Input, Form } from "antd";
+
+const FormItem = Form.Item;
 
 const TextFieldGroup = ({
   name,
@@ -11,24 +13,25 @@ const TextFieldGroup = ({
   info,
   type,
   onChange,
-  disabled
+  disabled,
+  size
 }) => {
+  debugger;
   return (
-    <div className="form-group">
-      <input
+    <FormItem
+      validateStatus={error && "error"}
+      help={error ? error : info ? info : ""}
+    >
+      <Input
+        size={size}
         type={type}
-        className={classnames("form-control form-control-lg", {
-          "is-invalid": error
-        })}
         placeholder={placeholder}
         name={name}
         value={value}
         onChange={onChange}
         disabled={disabled}
       />
-      {info && <small className="form-text text-muted">{info}</small>}
-      {error && <div className="invalid-feedback">{error}</div>}
-    </div>
+    </FormItem>
   );
 };
 

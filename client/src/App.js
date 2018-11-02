@@ -14,7 +14,7 @@ import Navbar from "./components/layout/navbar";
 import Footer from "./components/layout/footer";
 import Landing from "./components/layout/landing";
 import Register from "./components/auth/Register";
-import Login from "./components/auth/Login";
+import Login from "./components/auth/login";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
@@ -27,6 +27,8 @@ import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
 
 import "./App.css";
+
+const { Content } = Layout;
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -54,11 +56,11 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <Layout className="layout">
-            <div className="App">
+          <Layout>
+            <div className="app">
               <Navbar />
               <Route exact path="/" component={Landing} />
-              <div className="container">
+              <Content className="content">
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/profiles" component={Profiles} />
@@ -101,7 +103,7 @@ class App extends Component {
                   <PrivateRoute exact path="/post/:id" component={Post} />
                 </Switch>
                 <Route exact path="/not-found" component={NotFound} />
-              </div>
+              </Content>
               <Footer />
             </div>
           </Layout>
