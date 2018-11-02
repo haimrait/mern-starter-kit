@@ -47,7 +47,8 @@ TextFieldGroup.propTypes = {
 };
 
 TextFieldGroup.defaultProps = {
-  type: "text"
+  type: "text",
+  size: "large"
 };
 
 export default TextFieldGroup;

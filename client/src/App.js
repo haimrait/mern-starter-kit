@@ -13,7 +13,7 @@ import PrivateRoute from "./components/common/PrivateRoute";
 import Navbar from "./components/layout/navbar";
 import Footer from "./components/layout/footer";
 import Landing from "./components/layout/landing";
-import Register from "./components/auth/Register";
+import Register from "./components/auth/register";
 import Login from "./components/auth/login";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/create-profile/CreateProfile";
