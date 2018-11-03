@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import TextFieldGroup from "../common/TextFieldGroup";
-import DateFieldGroup from "../common/DateFieldGroup";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
+import TextFieldGroup from "../../common/text-field-group";
+import DateFieldGroup from "../../common/date-field-group";
+import TextAreaFieldGroup from "../../common/text-area-field-group";
 import { Col, Row, Form, Button, Checkbox } from "antd";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addExperience } from "../../actions/profileActions";
+import { addEducation } from "../../../actions/profileActions";
 
 const FormItem = Form.Item;
 
-class AddExperience extends Component {
+class AddEducation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      company: "",
-      title: "",
-      location: "",
+      school: "",
+      degree: "",
+      fieldofstudy: "",
       from: "",
       to: "",
       current: false,
@@ -35,17 +35,17 @@ class AddExperience extends Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const expData = {
-      company: this.state.company,
-      title: this.state.title,
-      location: this.state.location,
+    const eduData = {
+      school: this.state.school,
+      degree: this.state.degree,
+      fieldofstudy: this.state.fieldofstudy,
       from: this.state.from,
       to: this.state.to,
       current: this.state.current,
       description: this.state.description
     };
 
-    this.props.addExperience(expData, this.props.history);
+    this.props.addEducation(eduData, this.props.history);
   };
 
   onChange = e => {
@@ -63,7 +63,7 @@ class AddExperience extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="add-experience">
+      <div className="add-education">
         <Row>
           <Col span="4">
             <Button>
@@ -73,32 +73,32 @@ class AddExperience extends Component {
         </Row>
         <Row type="flex" justify="center">
           <Col span={24}>
-            <h1 className="display-41 text-center1">Add Experience</h1>
+            <h1 className="display-41 text-center1">Add Education</h1>
             <p className="lead1 text-center1">
-              Add any job or position that you have had in the past or current
+              Add any school, bootcamp, etc that you have attended
             </p>
             <small className="display-block pb-31">* = required fields</small>
             <Form noValidate onSubmit={this.onSubmit}>
               <TextFieldGroup
-                placeholder="* Company"
-                name="company"
-                value={this.state.company}
+                placeholder="* School"
+                name="school"
+                value={this.state.school}
                 onChange={this.onChange}
-                error={errors.company}
+                error={errors.school}
               />
               <TextFieldGroup
-                placeholder="* Job Title"
-                name="title"
-                value={this.state.title}
+                placeholder="* Degree or Certification"
+                name="degree"
+                value={this.state.degree}
                 onChange={this.onChange}
-                error={errors.title}
+                error={errors.degree}
               />
               <TextFieldGroup
-                placeholder="Location"
-                name="location"
-                value={this.state.location}
+                placeholder="* Field of Study"
+                name="fieldofstudy"
+                value={this.state.fieldofstudy}
                 onChange={this.onChange}
-                error={errors.location}
+                error={errors.fieldofstudy}
               />
               <h6>From Date</h6>
               <DateFieldGroup
@@ -130,12 +130,12 @@ class AddExperience extends Component {
               </FormItem>
               <TextAreaFieldGroup
                 className="fs-1"
-                placeholder="Job Description"
+                placeholder="Program Description"
                 name="description"
                 value={this.state.description}
                 onChange={this.onChange}
                 error={errors.description}
-                info="Tell us about the the position"
+                info="Tell us about the program that you were in"
               />
               <Button
                 size="large"
@@ -153,8 +153,8 @@ class AddExperience extends Component {
   }
 }
 
-AddExperience.propTypes = {
-  addExperience: PropTypes.func.isRequired,
+AddEducation.propTypes = {
+  addEducation: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -166,5 +166,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addExperience }
-)(withRouter(AddExperience));
+  { addEducation }
+)(withRouter(AddEducation));

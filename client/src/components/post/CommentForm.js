@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
+import TextAreaFieldGroup from "../common/text-area-field-group";
 import { addComment } from "../../actions/postActions";
 
 class CommentForm extends Component {

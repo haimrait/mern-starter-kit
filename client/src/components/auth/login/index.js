@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Form, Button, Row, Col } from "antd";
 import { connect } from "react-redux";
 import { loginUser } from "../../../actions/authActions";
-import TextFieldGroup from "../../common/TextFieldGroup";
+import TextFieldGroup from "../../common/text-field-group";
 
 class Login extends Component {
   constructor() {

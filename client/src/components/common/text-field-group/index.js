@@ -14,7 +14,8 @@ const TextFieldGroup = ({
   type,
   onChange,
   disabled,
-  size
+  size,
+  addonBefore
 }) => {
   return (
     <FormItem
@@ -22,6 +23,7 @@ const TextFieldGroup = ({
       help={error ? error : info ? info : ""}
     >
       <Input
+        addonBefore={addonBefore}
         size={size}
         type={type}
         placeholder={placeholder}
@@ -36,6 +38,7 @@ const TextFieldGroup = ({
 
 TextFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
+  addonBefore: PropTypes.element,
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
   info: PropTypes.string,

@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { Form, Button, Row, Col } from "antd";
 import { connect } from "react-redux";
 import { registerUser } from "../../../actions/authActions";
-import TextFieldGroup from "../../common/TextFieldGroup";
+import TextFieldGroup from "../../common/text-field-group";
 
 class Register extends Component {
   constructor() {
