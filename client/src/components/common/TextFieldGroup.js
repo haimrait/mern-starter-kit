@@ -16,7 +16,6 @@ const TextFieldGroup = ({
   disabled,
   size
 }) => {
-  debugger;
   return (
     <FormItem
       validateStatus={error && "error"}

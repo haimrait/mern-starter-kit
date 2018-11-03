@@ -1,4 +1,4 @@
-img {
+/* img {
   width: 100%;
 }
 
@@ -13,12 +13,17 @@ img {
 
 .form-control::placeholder {
   color: #bbb !important;
-}
+} */
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 .text-center1 {
@@ -49,9 +54,17 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.mb-11 {
+  margin-bottom: 0.25rem;
+}
+
 .lead1 {
   font-size: 1.25rem;
   font-weight: 300;
+}
+
+.primary-color {
+  color: #17a2b8;
 }
 
 .bg-dark1 {
@@ -68,6 +81,14 @@ body {
 
 .submit-btn {
   width: 100%;
+}
+
+.text-muted1 {
+  color: #6c757d;
+}
+
+.display-block {
+  display: block;
 }
 
 .app {

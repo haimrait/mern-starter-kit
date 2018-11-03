@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Col, Row } from "antd";
 import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
-import Spinner from "../common/Spinner";
+import Spinner from "../common/spinner";
 import ProfileActions from "./ProfileActions";
 import Experience from "./Experience";
 import Education from "./Education";
@@ -30,16 +31,17 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
           <div>
-            <p className="lead text-muted">
+            <p className="lead1 text-muted1 mb-21">
               Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
             <ProfileActions />
             <Experience experience={profile.experience} />
+            {/*
             <Education education={profile.education} />
             <div style={{ marginBottom: "60px" }} />
             <button onClick={this.onDeleteClick} className="btn btn-danger">
               Delete My Account
-            </button>
+            </button> */}
           </div>
         );
       } else {
@@ -58,14 +60,12 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4">Dashboard</h1>
-              {dashboardContent}
-            </div>
-          </div>
-        </div>
+        <Row type="flex" justify="center">
+          <Col span={24}>
+            <h1 className="display-41 mb-11">Dashboard</h1>
+            {dashboardContent}
+          </Col>
+        </Row>
       </div>
     );
   }
