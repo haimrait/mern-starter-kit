@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Table, Button } from "antd";
 import Moment from "react-moment";
-import { deleteExperience } from "../../actions/profileActions";
+import { deleteExperience } from "../../../actions/profileActions";
 
 class Experience extends Component {
   onDeleteClick = id => {
