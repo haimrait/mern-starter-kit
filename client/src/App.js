@@ -21,7 +21,7 @@ import EditProfile from "./components/edit-profile";
 import AddExperience from "./components/add-credentials/add-experience";
 import AddEducation from "./components/add-credentials/add-education";
 import Profiles from "./components/profiles";
-import Profile from "./components/profile/Profile";
+import Profile from "./components/profile";
 import NotFound from "./components/not-found/index";
 import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
@@ -57,7 +57,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Layout>
-            <div className="app">
+            <div className="app background-color">
               <Navbar />
               <Route exact path="/" component={Landing} />
               <Content className="content">

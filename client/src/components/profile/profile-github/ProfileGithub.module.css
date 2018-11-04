@@ -1,0 +1,19 @@
+.badge {
+  padding: 0.25em 0.4em;
+  font-size: 85%;
+  font-weight: 700;
+  border-radius: 0.25rem;
+  color: #fff;
+}
+
+.badge-bg-forks {
+  background-color: #28a745;
+}
+
+.badge-bg-watchers {
+  background-color: #6c757d;
+}
+
+.badge-bg-stars {
+  background-color: #17a2b8;
+}

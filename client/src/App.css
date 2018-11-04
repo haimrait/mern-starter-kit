@@ -21,6 +21,13 @@ body {
   font-family: sans-serif;
 }
 
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 h4 {
   font-size: 1.5rem;
   font-weight: 400;
@@ -55,22 +62,26 @@ small {
 
 .display-31 {
   font-size: 4.5rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
 }
 
 .display-41 {
   font-size: 3.5rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
+}
+
+.fs-1 {
+  font-size: 1rem;
 }
 
 .mt-41 {
   margin-top: 1.5rem;
 }
 
-.fs-1 {
-  font-size: 1rem;
+.mt-3 {
+  margin-top: 1rem;
 }
 
 .mt-2 {
@@ -101,6 +112,14 @@ small {
   margin-left: 0.5rem;
 }
 
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
 .pb-31 {
   padding-bottom: 1rem;
 }
@@ -111,11 +130,15 @@ small {
 
 .lead1 {
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .primary-color {
   color: #17a2b8;
+}
+
+.bg-light {
+  background-color: #f8f9fa;
 }
 
 .bg-dark1 {
@@ -146,10 +169,6 @@ small {
   display: inline;
 }
 
-.app {
-  background-color: #fff;
-}
-
 .content {
   width: 1024px;
   margin: 24px auto;
@@ -157,4 +176,8 @@ small {
 
 .background-color {
   background-color: #fff;
+}
+
+.text-white {
+  color: white;
 }

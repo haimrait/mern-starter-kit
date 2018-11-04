@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import ProfileHeader from "./ProfileHeader";
-import ProfileAbout from "./ProfileAbout";
-import ProfileCreds from "./ProfileCreds";
-import ProfileGithub from "./ProfileGithub";
+import ProfileHeader from "./profile-header";
+import ProfileAbout from "./profile-about";
+import ProfileCreds from "./profile-creds";
+import ProfileGithub from "./profile-github";
 import Spinner from "../common/spinner/index";
+import { Row, Col, Button } from "antd";
 import { getProfileByHandle } from "../../actions/profileActions";
 
 class Profile extends Component {
@@ -30,15 +31,15 @@ class Profile extends Component {
       profileContent = <Spinner />;
     } else {
       profileContent = (
-        <div>
-          <div className="row">
-            <div className="col-md-6">
-              <Link to="/profiles" className="btn btn-light mb-3 float-left">
-                Back To Profiles
-              </Link>
-            </div>
-            <div className="col-md-6" />
-          </div>
+        <React.Fragment>
+          <Row>
+            <Col span={12}>
+              <Button className="mb-3">
+                <Link to="/profiles">Back To Profiles</Link>
+              </Button>
+            </Col>
+            <Col span={12} />
+          </Row>
           <ProfileHeader profile={profile} />
           <ProfileAbout profile={profile} />
           <ProfileCreds
@@ -48,17 +49,15 @@ class Profile extends Component {
           {profile.githubusername ? (
             <ProfileGithub username={profile.githubusername} />
           ) : null}
-        </div>
+        </React.Fragment>
       );
     }
 
     return (
       <div className="profile">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">{profileContent}</div>
-          </div>
-        </div>
+        <Row>
+          <Col span={24}>{profileContent}</Col>
+        </Row>
       </div>
     );
   }
