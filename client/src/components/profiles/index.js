@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Spinner from "../common/spinner/index";
-import ProfileItem from "./ProfileItem";
+import ProfileItem from "./profile-item";
+import { Row, Col, List } from "antd";
 import { getProfiles } from "../../actions/profileActions";
 
 class Profiles extends Component {
@@ -18,9 +19,15 @@ class Profiles extends Component {
       profileItems = <Spinner />;
     } else {
       if (profiles.length > 0) {
-        profileItems = profiles.map(profile => (
-          <ProfileItem key={profile._id} profile={profile} />
-        ));
+        profileItems = (
+          <List
+            grid={{ span: 24 }}
+            dataSource={profiles}
+            renderItem={profile => (
+              <ProfileItem key={profile._id} profile={profile} />
+            )}
+          />
+        );
       } else {
         profileItems = <h4>No profiles found...</h4>;
       }
@@ -28,17 +35,17 @@ class Profiles extends Component {
 
     return (
       <div className="profiles">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4 text-center">Developer Profiles</h1>
-              <p className="lead text-center">
-                Browse and connect with developers
-              </p>
-              {profileItems}
-            </div>
-          </div>
-        </div>
+        <Row type="flex" justify="center">
+          <Col span={24}>
+            <h1 className="display-41 text-center1 mb-21">
+              Developer Profiles
+            </h1>
+            <p className="lead1 text-center1">
+              Browse and connect with developers
+            </p>
+            {profileItems}
+          </Col>
+        </Row>
       </div>
     );
   }

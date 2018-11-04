@@ -26,6 +26,11 @@ h4 {
   font-weight: 400;
 }
 
+h3 {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
 h6 {
   font-weight: 400;
   font-size: 1rem;
@@ -88,12 +93,20 @@ small {
   margin-bottom: 0.25rem;
 }
 
+.mb-0 {
+  margin-bottom: 0rem;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
 
 .pb-31 {
   padding-bottom: 1rem;
+}
+
+.pr-1 {
+  padding-right: 0.25rem;
 }
 
 .lead1 {
@@ -140,4 +153,8 @@ small {
 .content {
   width: 1024px;
   margin: 24px auto;
+}
+
+.background-color {
+  background-color: #fff;
 }

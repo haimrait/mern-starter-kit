@@ -17,12 +17,12 @@ import Register from "./components/auth/register";
 import Login from "./components/auth/login";
 import Dashboard from "./components/dashboard";
 import CreateProfile from "./components/create-profile";
-import EditProfile from "./components/edit-profile/EditProfile";
+import EditProfile from "./components/edit-profile";
 import AddExperience from "./components/add-credentials/add-experience";
 import AddEducation from "./components/add-credentials/add-education";
-import Profiles from "./components/profiles/Profiles";
+import Profiles from "./components/profiles";
 import Profile from "./components/profile/Profile";
-import NotFound from "./components/not-found/NotFound";
+import NotFound from "./components/not-found/index";
 import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
 

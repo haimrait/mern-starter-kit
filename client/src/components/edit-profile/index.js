@@ -194,10 +194,7 @@ class EditProfile extends Component {
         </Row>
         <Row type="flex" justify="center">
           <Col span={24}>
-            <h1 className="display-41 text-center1">Create Your Profile</h1>
-            <p className="lead1 text-center1">
-              Let's get some information to make your profile stand out
-            </p>
+            <h1 className="display-41 text-center1">Edit Your Profile</h1>
             <small className="display-block pb-31">* = required fields</small>
             <Form noValidate onSubmit={this.onSubmit}>
               <TextFieldGroup
