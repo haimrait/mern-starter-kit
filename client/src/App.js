@@ -23,7 +23,7 @@ import AddEducation from "./components/add-credentials/add-education";
 import Profiles from "./components/profiles";
 import Profile from "./components/profile";
 import NotFound from "./components/not-found/index";
-import Posts from "./components/posts/Posts";
+import Posts from "./components/posts";
 import Post from "./components/post/Post";
 
 import "./App.css";

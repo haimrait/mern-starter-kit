@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import PostForm from "./PostForm";
-import PostFeed from "./PostFeed";
+import PostForm from "./post-form";
+import PostFeed from "./post-feed";
+import { Row, Col } from "antd";
 import { getPosts } from "../../actions/postActions";
 import Spinner from "../common/spinner/index";
 
@@ -22,14 +23,12 @@ class Posts extends Component {
 
     return (
       <div className="feed">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <PostForm />
-              {postContent}
-            </div>
-          </div>
-        </div>
+        <Row>
+          <Col span={24}>
+            <PostForm />
+            {postContent}
+          </Col>
+        </Row>
       </div>
     );
   }

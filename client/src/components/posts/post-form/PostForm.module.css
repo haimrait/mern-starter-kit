@@ -1,0 +1,15 @@
+.card {
+  border-radius: 0.25rem;
+}
+
+.submit {
+  background-color: #343a40;
+  border-color: #343a40;
+  color: #fff;
+}
+
+.submit:hover {
+  background-color: #1d2124;
+  border-color: #171a1d;
+  color: #fff;
+}

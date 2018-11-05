@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import PropTypes from "prop-types";
+import { Badge, Card, Button, Row, Col, Avatar } from "antd";
 import { Link } from "react-router-dom";
-import { deletePost, addLike, removeLike } from "../../actions/postActions";
+import { deletePost, addLike, removeLike } from "../../../actions/postActions";
 
 class PostItem extends Component {
   onDeleteClick = id => {
@@ -29,66 +30,62 @@ class PostItem extends Component {
 
   render() {
     const { post, auth, showActions } = this.props;
+    debugger;
     return (
-      <div className="card card-body mb-3">
-        <div className="row">
-          <div className="col-md-2">
-            <a href="profile.html">
-              <img
-                className="rounded-circle d-none d-md-block"
-                src={post.avatar}
-                alt=""
-              />
-            </a>
-            <br />
-            <p className="text-center">{post.name}</p>
-          </div>
-          <div className="col-md-10">
-            <p className="lead">{post.text}</p>
+      <Card className="mb-3" bordered>
+        <Row type="flex" justify="space-between">
+          <Col span={4} className="text-center1">
+            <Link to={`profile/${post.user}`}>
+              <Avatar size={148} src={post.avatar} alt={""} />
+            </Link>
+            <p className="mt-2 fs-1">{post.name}</p>
+          </Col>
+          <Col span={18}>
+            <p className="lead1">{post.text}</p>
             {showActions ? (
-              <span>
-                <button
+              <React.Fragment>
+                <Button
+                  size="large"
+                  className="mr-1"
                   onClick={() => {
                     this.onLikeClick(post._id);
                   }}
-                  type="button"
-                  className="btn btn-light mr-1"
                 >
                   <i
-                    className={classnames("fas fa-thumbs-up", {
-                      "text-info": this.findUserLike(post.likes)
+                    className={classnames("fas fa-thumbs-up mr-1", {
+                      "primary-color": this.findUserLike(post.likes)
                     })}
                   />
-                  <span className="badge badge-light">{post.likes.length}</span>
-                </button>
-                <button
+                  <Badge>{post.likes.length}</Badge>
+                </Button>
+                <Button
+                  size="large"
+                  className="mr-1"
                   onClick={() => {
                     this.onUnLikeClick(post._id);
                   }}
-                  type="button"
-                  className="btn btn-light mr-1"
                 >
-                  <i className="text-secondary fas fa-thumbs-down" />
-                </button>
-                <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-                  Comments
-                </Link>
+                  <i className="fas fa-thumbs-down" />
+                </Button>
+                <Button className="mr-1" type="primary" size="large">
+                  <Link to={`/post/${post._id}`}>Comments</Link>
+                </Button>
                 {post.user === auth.user.id ? (
-                  <button
+                  <Button
+                    size="large"
+                    type="danger"
                     onClick={() => {
                       this.onDeleteClick(post._id);
                     }}
-                    type="button"
-                    className="btn btn-danger mr-1"
                   >
                     <i className="fas fa-times" />
-                  </button>
+                  </Button>
                 ) : null}
-              </span>
+              </React.Fragment>
             ) : null}
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Card>
     );
   }
 }
