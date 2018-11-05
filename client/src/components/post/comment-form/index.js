@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import TextAreaFieldGroup from "../common/text-area-field-group";
-import { addComment } from "../../actions/postActions";
+import { Button, Card, Form } from "antd";
+import TextAreaFieldGroup from "../../common/text-area-field-group";
+import { addComment } from "../../../actions/postActions";
+
+import styles from "./CommentForm.module.css";
 
 class CommentForm extends Component {
   constructor(props) {
@@ -41,28 +44,31 @@ class CommentForm extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="post-form mb-3">
-        <div className="card card-info">
-          <div className="card-header bg-info text-white">
-            Make a comment...
-          </div>
-          <div className="card-body">
-            <form onSubmit={this.onSubmit}>
-              <div className="form-group">
-                <TextAreaFieldGroup
-                  placeholder="Reply to post"
-                  name="text"
-                  value={this.state.text}
-                  onChange={this.onChange}
-                  error={errors.text}
-                />
-              </div>
-              <button type="submit" className="btn btn-dark">
-                Submit
-              </button>
-            </form>
-          </div>
-        </div>
+      <div className="comment-form mb-3">
+        <Card
+          bordered
+          className={styles["card"]}
+          headStyle={{
+            color: "#fff",
+            backgroundColor: "#17a2b8",
+            fontWeight: "400"
+          }}
+          title="Make a comment..."
+        >
+          <Form noValidate onSubmit={this.onSubmit}>
+            <TextAreaFieldGroup
+              placeholder="Reply to post"
+              name="text"
+              value={this.state.text}
+              onChange={this.onChange}
+              error={errors.text}
+              className="fs-1"
+            />
+            <Button size="large" className={styles["submit"]} htmlType="submit">
+              Submit
+            </Button>
+          </Form>
+        </Card>
       </div>
     );
   }

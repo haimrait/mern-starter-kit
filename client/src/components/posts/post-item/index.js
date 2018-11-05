@@ -30,7 +30,6 @@ class PostItem extends Component {
 
   render() {
     const { post, auth, showActions } = this.props;
-    debugger;
     return (
       <Card className="mb-3" bordered>
         <Row type="flex" justify="space-between">

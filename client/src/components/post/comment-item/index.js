@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { deleteComment } from "../../actions/postActions";
+import { Row, Col, Card, Button, Avatar } from "antd";
+import { deleteComment } from "../../../actions/postActions";
 
 class CommentItem extends Component {
   onDeleteClick = (postId, commentId) => {
@@ -9,37 +11,31 @@ class CommentItem extends Component {
   };
   render() {
     const { comment, postId, auth } = this.props;
-
     return (
-      <div className="card card-body mb-3">
-        <div className="row">
-          <div className="col-md-2">
-            <a href="profile.html">
-              <img
-                className="rounded-circle d-none d-md-block"
-                src={comment.avatar}
-                alt=""
-              />
-            </a>
-            <br />
-            <p className="text-center">{comment.name}</p>
-          </div>
-          <div className="col-md-10">
-            <p className="lead">{comment.text}</p>
+      <Card className="mb-3" bordered>
+        <Row type="flex" justify="space-between">
+          <Col span={4} className="text-center1">
+            <Link to={`profile/${comment.user}`}>
+              <Avatar size={148} src={comment.avatar} alt={""} />
+            </Link>
+            <p className="mt-2 fs-1">{comment.name}</p>
+          </Col>
+          <Col span={18}>
+            <p className="lead1">{comment.text}</p>
             {comment.user === auth.user.id ? (
-              <button
+              <Button
                 onClick={() => {
                   this.onDeleteClick(postId, comment._id);
                 }}
-                type="button"
-                className="btn btn-danger mr-1"
+                type="danger"
+                className="mr-1"
               >
                 <i className="fas fa-times" />
-              </button>
+              </Button>
             ) : null}
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Card>
     );
   }
 }

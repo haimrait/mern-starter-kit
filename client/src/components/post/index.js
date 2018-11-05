@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import PostItem from "../posts/post-item";
-import CommentForm from "./CommentForm";
-import CommentFeed from "./CommentFeed";
+import CommentForm from "./comment-form";
+import CommentFeed from "./comment-feed";
+import { Row, Col, Button } from "antd";
 import Spinner from "../common/spinner/index";
 import { getPost } from "../../actions/postActions";
 
@@ -30,16 +31,14 @@ class Post extends Component {
     }
     return (
       <div className="post">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <Link to="/feed" className="btn btn-light mb-3">
-                Back To Feed
-              </Link>
-              {postContent}
-            </div>
-          </div>
-        </div>
+        <Row>
+          <Col span={24}>
+            <Button className="mb-3">
+              <Link to="/feed">Go Back</Link>
+            </Button>
+            {postContent}
+          </Col>
+        </Row>
       </div>
     );
   }
