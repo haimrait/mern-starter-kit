@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Layout, Col, Row, Avatar } from "antd";
+import { Layout, Col, Row, Avatar, Menu, Drawer, Icon, Button } from "antd";
+import windowSize from "react-window-size";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../../actions/authActions";
@@ -11,6 +12,13 @@ import styles from "./Navbar.module.css";
 const { Header } = Layout;
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isShowMenu: false
+    };
+  }
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.clearCurrentProfile();
@@ -19,20 +27,37 @@ class Navbar extends Component {
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
-
     const authLinks = (
       <React.Fragment>
-        <Col span={1} offset={17}>
+        <Col
+          xl={{ span: 2, offset: 13 }}
+          lg={{ span: 2, offset: 11 }}
+          md={{ span: 3, offset: 7 }}
+          sm={{ span: 4, offset: 1 }}
+          xs={{ span: 4 }}
+        >
           <Link className="nav-link1" to="/feed">
             Post Feed
           </Link>
         </Col>
-        <Col span={1}>
+        <Col
+          xl={{ span: 2 }}
+          lg={{ span: 2 }}
+          md={{ span: 3 }}
+          sm={{ span: 4 }}
+          xs={{ span: 4 }}
+        >
           <Link className="nav-link1" to="/dashboard">
             Dashboard
           </Link>
         </Col>
-        <Col span={2}>
+        <Col
+          xl={{ span: 2 }}
+          lg={{ span: 3 }}
+          md={{ span: 3 }}
+          sm={{ span: 4 }}
+          xs={{ span: 4 }}
+        >
           <Link className="nav-link1" to=" " onClick={this.onLogoutClick}>
             <Avatar
               size={"small"}
@@ -48,12 +73,12 @@ class Navbar extends Component {
 
     const guestLinks = (
       <React.Fragment>
-        <Col span={1} offset={19}>
+        <Col xxl={{ span: 1, offset: 18 }} xl={{ span: 3, offset: 19 }}>
           <Link className="nav-link1" to="/register">
             Sign Up
           </Link>
         </Col>
-        <Col span={1}>
+        <Col xxl={{ span: 1 }} xl={{ span: 2 }}>
           <Link className="nav-link1" to="/login">
             Login
           </Link>
@@ -63,22 +88,58 @@ class Navbar extends Component {
 
     return (
       <Header className="bg-dark1">
-        <Row>
-          <Col span={2}>
-            <Link
-              className={`${styles["header-logo-text"]} lead1 text-light1`}
-              to="/"
+        {this.props.windowWidth > 600 ? (
+          <Row>
+            <Col
+              xl={{ span: 3 }}
+              lg={{ span: 4 }}
+              md={{ span: 5 }}
+              sm={{ span: 7 }}
+              xs={{ span: 8 }}
             >
-              DevConnector
-            </Link>
-          </Col>
-          <Col span={1}>
-            <Link className="nav-link1" to="/profiles">
-              Developers
-            </Link>
-          </Col>
-          {isAuthenticated ? authLinks : guestLinks}
-        </Row>
+              <Link
+                className={`${styles["header-logo-text"]} lead1 text-light1`}
+                to="/"
+              >
+                DevConnector
+              </Link>
+            </Col>
+            <Col
+              xl={{ span: 2 }}
+              lg={{ span: 2 }}
+              md={{ span: 3 }}
+              sm={{ span: 4 }}
+              xs={{ span: 4 }}
+            >
+              <Link className="nav-link1" to="/profiles">
+                Developers
+              </Link>
+            </Col>
+            {isAuthenticated ? authLinks : guestLinks}
+          </Row>
+        ) : (
+          <React.Fragment>
+            <Button
+              onClick={() =>
+                this.setState({ isShowMenu: !this.state.isShowMenu })
+              }
+              icon="bars"
+              ghost
+            />
+            <Drawer title="Menu" placement="left" closable={false}>
+              <Menu>
+                <Menu.Item key="1">
+                  <Icon type="mail" />
+                  Navigation One
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Icon type="calendar" />
+                  Navigation Two
+                </Menu.Item>
+              </Menu>
+            </Drawer>
+          </React.Fragment>
+        )}
       </Header>
     );
   }
@@ -86,14 +147,17 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  windowWidth: PropTypes.string.is
 };
 
 const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(
-  mapStateToProps,
-  { logoutUser, clearCurrentProfile }
-)(Navbar);
+export default windowSize(
+  connect(
+    mapStateToProps,
+    { logoutUser, clearCurrentProfile }
+  )(Navbar)
+);
