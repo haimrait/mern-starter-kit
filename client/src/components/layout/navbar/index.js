@@ -119,14 +119,32 @@ class Navbar extends Component {
           </Row>
         ) : (
           <React.Fragment>
-            <Button
-              onClick={() =>
-                this.setState({ isShowMenu: !this.state.isShowMenu })
+            <Row>
+              <Col offset={20} span={4}>
+                <Button
+                  onClick={() =>
+                    this.setState({ isShowMenu: !this.state.isShowMenu })
+                  }
+                  icon="bars"
+                  ghost
+                />
+              </Col>
+            </Row>
+
+            <Drawer
+              className="bg-dark1"
+              title={
+                <Link
+                  className={`${styles["header-logo-text"]} lead1 text-light1`}
+                  to="/"
+                >
+                  DevConnector
+                </Link>
               }
-              icon="bars"
-              ghost
-            />
-            <Drawer title="Menu" placement="left" closable={false}>
+              placement="left"
+              closable={true}
+              visible={this.state.isShowMenu}
+            >
               <Menu>
                 <Menu.Item key="1">
                   <Icon type="mail" />
