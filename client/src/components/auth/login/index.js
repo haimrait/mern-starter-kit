@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "antd";
+import TextFieldGroup from "../../../common/text-field-group";
 import { connect } from "react-redux";
 import { loginUser } from "../../../actions/authActions";
-import TextFieldGroup from "../../common/text-field-group";
 
 class Login extends Component {
   constructor() {
@@ -50,42 +51,49 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="login">
-        <Row type="flex" justify="center">
-          <Col span={24}>
-            <h1 className="display-41 text-center1">Log In</h1>
-            <p className="lead1 text-center1">
-              Sign in to your DevConnector account
-            </p>
-            <Form noValidate onSubmit={this.onSubmit}>
-              <TextFieldGroup
-                placeholder="Email Address"
-                name="email"
-                type="email"
-                value={this.state.email}
-                onChange={this.onChange}
-                error={errors.email}
-              />
-              <TextFieldGroup
-                placeholder="Password"
-                name="password"
-                type="password"
-                value={this.state.password}
-                onChange={this.onChange}
-                error={errors.password}
-              />
-              <Button
-                size="large"
-                className="submit-btn"
-                type="primary"
-                htmlType="submit"
-              >
-                Submit
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-      </div>
+      <Row className="login" type="flex" justify="center">
+        <Col span={24}>
+          <h1 className="text-center">Log In</h1>
+          <p className="text-center">Sign in to your application account</p>
+          <Form noValidate onSubmit={this.onSubmit}>
+            <TextFieldGroup
+              placeholder="Email Address"
+              name="email"
+              type="email"
+              value={this.state.email}
+              onChange={this.onChange}
+              error={errors.email}
+            />
+            <TextFieldGroup
+              placeholder="Password"
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.onChange}
+              error={errors.password}
+            />
+            <Row type="flex" justify="center" align="middle">
+              <Col span={24}>
+                <Button
+                  size={"large"}
+                  className="width-100"
+                  type="primary"
+                  htmlType="submit"
+                >
+                  Login
+                </Button>
+              </Col>
+            </Row>
+            <Row className="mt-10">
+              <Col span={24}>
+                <Link className="f-r" to="/register">
+                  Sign Up
+                </Link>
+              </Col>
+            </Row>
+          </Form>
+        </Col>
+      </Row>
     );
   }
 }

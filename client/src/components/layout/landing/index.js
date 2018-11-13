@@ -15,24 +15,14 @@ class Landing extends Component {
   render() {
     return (
       <div className={styles["landing"]}>
-        <div
-          className={`${styles["dark-overlay"]} ${
-            styles["landing-inner"]
-          } text-light1`}
-        >
-          <Row className="text-center1">
+        <div className={`${styles["dark-overlay"]} ${styles["landing-inner"]}`}>
+          <Row className="text-center">
             <Col span={24}>
-              <h1 className="display-31 mb-41 text-light1">
-                Developer Connector
-              </h1>
-              <p className="lead1">
-                Create a developer profile/portfolio, share posts and get help
-                from other developers
-              </p>
-              <hr />
+              <h1 className={styles["site-name"]}>Company Name</h1>
+              <p className={styles["site-desc"]}>Company Description</p>
             </Col>
           </Row>
-          <Row className="text-center1" type="flex" align="middle">
+          <Row className="text-center" type="flex" align="middle">
             <Col
               xl={{ span: 2, offset: 10 }}
               md={{ span: 3, offset: 9 }}

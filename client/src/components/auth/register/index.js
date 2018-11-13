@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "antd";
 import { connect } from "react-redux";
 import { registerUser } from "../../../actions/authActions";
-import TextFieldGroup from "../../common/text-field-group";
+import TextFieldGroup from "../../../common/text-field-group";
 
 class Register extends Component {
   constructor() {
@@ -51,58 +51,65 @@ class Register extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="register">
-        <Row type="flex" justify="center">
-          <Col span={24}>
-            <h1 className="display-41 text-center1">Sign Up</h1>
-            <p className="lead1 text-center1">
-              Create your DevConnector account
-            </p>
-            <Form noValidate onSubmit={this.onSubmit}>
-              <TextFieldGroup
-                placeholder="Name"
-                name="name"
-                value={this.state.name}
-                onChange={this.onChange}
-                error={errors.name}
-              />
-              <TextFieldGroup
-                placeholder="Email"
-                name="email"
-                type="email"
-                value={this.state.email}
-                onChange={this.onChange}
-                error={errors.email}
-                info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
-              />
-              <TextFieldGroup
-                placeholder="Password"
-                name="password"
-                type="password"
-                value={this.state.password}
-                onChange={this.onChange}
-                error={errors.password}
-              />
-              <TextFieldGroup
-                placeholder="Confirm Password"
-                name="password2"
-                type="password"
-                value={this.state.password2}
-                onChange={this.onChange}
-                error={errors.password2}
-              />
-              <Button
-                size="large"
-                className="submit-btn"
-                type="primary"
-                htmlType="submit"
-              >
-                Submit
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-      </div>
+      <Row className="register" type="flex" justify="center">
+        <Col span={24}>
+          <h1 className="text-center">Sign Up</h1>
+          <p className="text-center">Create your DevConnector account</p>
+          <Form noValidate onSubmit={this.onSubmit}>
+            <TextFieldGroup
+              placeholder="Name"
+              name="name"
+              value={this.state.name}
+              onChange={this.onChange}
+              error={errors.name}
+            />
+            <TextFieldGroup
+              placeholder="Email"
+              name="email"
+              type="email"
+              value={this.state.email}
+              onChange={this.onChange}
+              error={errors.email}
+              info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
+            />
+            <TextFieldGroup
+              placeholder="Password"
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.onChange}
+              error={errors.password}
+            />
+            <TextFieldGroup
+              placeholder="Confirm Password"
+              name="password2"
+              type="password"
+              value={this.state.password2}
+              onChange={this.onChange}
+              error={errors.password2}
+            />
+            <Row type="flex" justify="center" align="middle">
+              <Col span={24}>
+                <Button
+                  className="width-100"
+                  size="large"
+                  type="primary"
+                  htmlType="submit"
+                >
+                  Sign Up
+                </Button>
+              </Col>
+            </Row>
+            <Row className="mt-10">
+              <Col span={24}>
+                <Link className="f-r" to="/login">
+                  Already have an account?
+                </Link>
+              </Col>
+            </Row>
+          </Form>
+        </Col>
+      </Row>
     );
   }
 }
