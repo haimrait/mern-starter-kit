@@ -19,6 +19,12 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/cheburashka
       - SECRET_OR_KEY=cheburashka
+    ports:
+      - "9229:9229"
+    command:
+      - node
+      - "--inspect-brk=0.0.0.0"
+      - "."
   client:
     build:
       dockerfile: Dockerfile.dev
