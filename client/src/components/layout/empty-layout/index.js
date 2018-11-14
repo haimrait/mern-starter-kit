@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Layout, Row, Col } from "antd";
+import { Layout } from "antd";
 import Footer from "../footer";
 import logo from "../../../img/logo.svg";
 
@@ -12,28 +12,19 @@ class EmptyLayout extends Component {
   render() {
     return (
       <Layout className={styles.container}>
-        <div className={styles.top}>
+        <div className="text-center">
           <Link to="/">
-            <Row
-              className={styles.header}
-              type="flex"
-              justify="center"
-              align="middle"
-            >
-              <Col span={1}>
-                <img alt="logo" className={styles.logo} src={logo} />
-              </Col>
-              <Col span={3}>
-                <span className={styles.title}>Ant Design</span>
-              </Col>
-            </Row>
+            <div className={styles.header}>
+              <img alt="logo" className={styles.logo} src={logo} />
+              <span className={styles.title}>Ant Design</span>
+            </div>
           </Link>
           <div className={styles.desc}>
             Ant Design 是西湖区最具影响力的 Web 设计规范
           </div>
         </div>
         <Content className={styles.content}>{this.props.children}</Content>
-        <Footer>Footer</Footer>
+        <Footer />
       </Layout>
     );
   }

@@ -1,17 +1,16 @@
-.top {
-  text-align: center;
-}
-
 .header {
   margin-top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
-.header a {
+.container a {
   text-decoration: none;
 }
 
 .logo {
   height: 44px;
+  margin-right: 8px;
 }
 
 .title {
