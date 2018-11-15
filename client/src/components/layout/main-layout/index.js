@@ -4,16 +4,18 @@ import NavBar from "../nav-bar";
 import SideBar from "../side-bar";
 import Footer from "../footer";
 
+import styles from "./MainLayout.module.css";
+
 const { Content } = Layout;
 
-class BasicLayout extends Component {
+class MainLayout extends Component {
   render() {
     return (
       <React.Fragment>
         <SideBar />
         <Layout>
           <NavBar />
-          <Content>{this.props.children}</Content>
+          <Content className={styles.content}>{this.props.children}</Content>
           <Footer />
         </Layout>
       </React.Fragment>
@@ -21,4 +23,4 @@ class BasicLayout extends Component {
   }
 }
 
-export default BasicLayout;
+export default MainLayout;

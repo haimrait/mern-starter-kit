@@ -10,6 +10,14 @@
   margin-top: 10px;
 }
 
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mr-3 {
+  margin-right: 3px;
+}
+
 .f-r {
   float: right;
 }

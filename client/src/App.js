@@ -8,13 +8,13 @@ import { Provider } from "react-redux";
 import store from "./store";
 import RouteWithLayout from "./common/route-with-layout";
 import PrivateRoute from "./common/private-route";
-import BasicLayout from "./components/layout/basic-layout";
+import MainLayout from "./components/layout/main-layout";
 import EmptyLayout from "./components/layout/empty-layout";
 import Landing from "./components/layout/landing";
 import Register from "./components/auth/register";
 import Login from "./components/auth/login";
 import NotFound from "./components/not-found";
-import BasicPage from "./components/basic-page";
+import Dashboard from "./components/dashboard";
 
 import "./App.css";
 
@@ -59,9 +59,9 @@ class App extends Component {
               />
               <PrivateRoute
                 exact
-                layout={BasicLayout}
+                layout={MainLayout}
                 path="/dashboard"
-                component={BasicPage}
+                component={Dashboard}
               />
               <RouteWithLayout
                 exact
