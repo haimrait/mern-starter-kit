@@ -1,31 +1,33 @@
-"AWSEBDockerrunVersion": 2,
-"containerDefinitions": [
-  {
-    "name": "client",
-    "image": "307949230/mern-client",
-    "hostname": "client",
-    "essential": false,
-    "memory": 128
-  },
-  {
-    "name": "server",
-    "image": "307949230/mern-server",
-    "hostname": "api",
-    "essential": false,
-    "memory": 128
-  },
-  {
-    "name": "nginx",
-    "image": "307949230/mern-nginx",
-    "hostname": "nginx",
-    "essential": true,
-    "memory": 128,
-    "portMappings": [
-      {
-        "hostPort": 80,
-        "containerPort": 80
-      }
-    ],
-    "links": ["client", "server"]
-  }
-]
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "307949230/mern-client",
+      "hostname": "client",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "server",
+      "image": "307949230/mern-server",
+      "hostname": "api",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "nginx",
+      "image": "307949230/mern-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}
