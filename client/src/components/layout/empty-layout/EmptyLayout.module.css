@@ -15,14 +15,11 @@
 
 .title {
   font-size: 33px;
-  /* color: @heading-color; */
   font-family: "Myriad Pro", "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-weight: 600;
 }
 
 .desc {
-  /* font-size: @font-size-base; */
-  /* color: @text-color-secondary; */
   margin-top: 12px;
   margin-bottom: 30px;
 }
@@ -30,10 +27,18 @@
 .container {
   height: 100vh;
   overflow: auto;
-  /* background: @layout-body-background; */
 }
 
 .content {
   margin: auto;
   width: 380px;
+}
+
+.link-color {
+  color: #17a2b8;
+}
+
+.link-color:hover {
+  color: #17a2b8;
+  box-shadow: 0 0 20px 0 rgba(215, 222, 227, 0.39);
 }

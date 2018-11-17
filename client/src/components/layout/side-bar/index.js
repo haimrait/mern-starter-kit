@@ -21,12 +21,18 @@ class SideBar extends Component {
   render() {
     return (
       <Sider
+        className={`${styles.sider} sider`}
         collapsible
         collapsed={this.state.collapsed}
         onCollapse={this.onCollapse}
       >
         <div className={styles.logo} />
-        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+        <Menu
+          className={styles.menu}
+          theme="dark"
+          defaultSelectedKeys={["1"]}
+          mode="inline"
+        >
           <Menu.Item key="1">
             <Icon type="dashboard" />
             <span>Dashboard</span>

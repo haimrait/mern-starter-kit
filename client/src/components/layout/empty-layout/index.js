@@ -13,14 +13,14 @@ class EmptyLayout extends Component {
     return (
       <Layout className={styles.container}>
         <div className="text-center">
-          <Link to="/">
+          <Link className={styles["link-color"]} to="/">
             <div className={styles.header}>
               <img alt="logo" className={styles.logo} src={logo} />
-              <span className={styles.title}>Ant Design</span>
+              <span className={styles.title}>Avian</span>
             </div>
           </Link>
           <div className={styles.desc}>
-            Ant Design 是西湖区最具影响力的 Web 设计规范
+            Avian is a multiple distribution channels manager for airlines.
           </div>
         </div>
         <Content className={styles.content}>{this.props.children}</Content>

@@ -7,7 +7,6 @@
 .content {
   font-weight: bold;
   font-size: 24px;
-  color: #242e42;
 }
 
 .positive {
@@ -22,4 +21,8 @@
   opacity: 0.5;
   color: #54617a;
   font-size: 12px;
+}
+
+.card {
+  height: 215px;
 }

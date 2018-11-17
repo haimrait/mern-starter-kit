@@ -7,3 +7,15 @@
 .export {
   font-size: 14px;
 }
+
+.demo-loading-container {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+.demo-infinite-container {
+  overflow: auto;
+  height: 300px;
+}
