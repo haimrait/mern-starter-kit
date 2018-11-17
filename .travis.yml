@@ -9,12 +9,16 @@ script:
   - docker run 307949230/client-test npm test -- --coverage
 
 after_success:
-  - docker build -t 307949230/mern-client ./client
-  - docker build -t 307949230/mern-nginx ./nginx
-  - docker build -t 307949230/mern-server ./server
-  # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # Take those images and push them to docker hub
-  - docker push 307949230/mern-client
-  - docker push 307949230/mern-nginx
-  - docker push 307949230/mern-server
+  # - docker build -t 307949230/mern-client ./client
+  # - docker build -t 307949230/mern-nginx ./nginx
+  # - docker build -t 307949230/mern-server ./server
+  # # Log in to the docker CLI
+  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # # Take those images and push them to docker hub
+  # - docker push 307949230/mern-client
+  # - docker push 307949230/mern-nginx
+  # - docker push 307949230/mern-server
+  - docker login -u _ -p "$HEROKU_API_KEY"  registry.heroku.com
+  # - docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
+  - heroku container:push nginx server client --recursive
+  - heroku container:release nginx server client
