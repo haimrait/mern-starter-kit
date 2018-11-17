@@ -9,15 +9,16 @@ script:
   - docker run 307949230/client-test npm test -- --coverage
 
 after_success:
-  # # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # # Take those images and push them to docker hub
   - docker build -t 307949230/mern-client ./client
   - docker build -t 307949230/mern-nginx ./nginx
   - docker build -t 307949230/mern-server ./server
+  # # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # # Take those images and push them to docker hub
   - docker push 307949230/mern-client
   - docker push 307949230/mern-nginx
   - docker push 307949230/mern-server
+
 deploy:
   provider: elasticbeanstalk
   region: us-east-1
