@@ -4,7 +4,6 @@ services:
 
 before_install:
   - docker build -t 307949230/client-test -f ./client/Dockerfile.dev ./client
-  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
 
 script:
   - docker run 307949230/client-test npm test -- --coverage
@@ -17,6 +16,7 @@ after_success:
   # - docker push 307949230/mern-nginx
   # - docker push 307949230/mern-server
   # -  restart --app my-heroku-app-name # requires HEROKU_API_KEY env variable
+  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
   - docker login -u _ -p "$HEROKU_API_KEY" registry.heroku.com
   # - docker build -t 307949230/mern-client ./client
   # - docker build -t 307949230/mern-nginx ./nginx
