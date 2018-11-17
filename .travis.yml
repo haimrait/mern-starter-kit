@@ -18,7 +18,10 @@ after_success:
   # - docker push 307949230/mern-client
   # - docker push 307949230/mern-nginx
   # - docker push 307949230/mern-server
-  - docker login -u _ -p "$HEROKU_API_KEY"  registry.heroku.com
+  - docker login -u _ -p "$HEROKU_API_KEY" registry.heroku.com
   # - docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
   - heroku container:push nginx server client --recursive
   - heroku container:release nginx server client
+  - heroku run bash --type=nginx
+  - heroku run bash --type=server
+  - heroku run bash --type=client
