@@ -4,24 +4,26 @@ services:
 
 before_install:
   - docker build -t 307949230/client-test -f ./client/Dockerfile.dev ./client
+  - wget -qO- https://toolbelt.heroku.com/install.sh | sh
 
 script:
   - docker run 307949230/client-test npm test -- --coverage
 
 after_success:
-  # - docker build -t 307949230/mern-client ./client
-  # - docker build -t 307949230/mern-nginx ./nginx
-  # - docker build -t 307949230/mern-server ./server
   # # Log in to the docker CLI
   # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # # Take those images and push them to docker hub
   # - docker push 307949230/mern-client
   # - docker push 307949230/mern-nginx
   # - docker push 307949230/mern-server
+  # -  restart --app my-heroku-app-name # requires HEROKU_API_KEY env variable
   - docker login -u _ -p "$HEROKU_API_KEY" registry.heroku.com
+  # - docker build -t 307949230/mern-client ./client
+  # - docker build -t 307949230/mern-nginx ./nginx
+  # - docker build -t 307949230/mern-server ./server
   # - docker login --username=_ --password=$(heroku auth:token) registry.heroku.com
-  - heroku container:push nginx server client --recursive
-  - heroku container:release nginx server client
-  - heroku run bash --type=nginx
-  - heroku run bash --type=server
-  - heroku run bash --type=client
+  - /usr/local/heroku/bin/heroku container:push nginx server client --recursive
+  - /usr/local/heroku/bin/heroku container:release nginx server client
+  # - heroku run bash --type=nginx
+  # - heroku run bash --type=server
+  # - heroku run bash --type=client
