@@ -1,0 +1,28 @@
+.title {
+  font-weight: 300;
+  font-size: 16px;
+  color: #2e3039;
+}
+
+.content {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.positive {
+  color: #03de73;
+}
+
+.negative {
+  color: #f52d56;
+}
+
+.metadata {
+  opacity: 0.5;
+  color: #54617a;
+  font-size: 12px;
+}
+
+.card {
+  height: 215px;
+}

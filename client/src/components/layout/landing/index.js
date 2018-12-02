@@ -18,8 +18,10 @@ class Landing extends Component {
         <div className={`${styles["dark-overlay"]} ${styles["landing-inner"]}`}>
           <Row className="text-center">
             <Col span={24}>
-              <h1 className={styles["site-name"]}>Company Name</h1>
-              <p className={styles["site-desc"]}>Company Description</p>
+              <h1 className={styles["site-name"]}>Avian</h1>
+              <p className={styles["site-desc"]}>
+                Avian is a multiple distribution channels manager for airlines.{" "}
+              </p>
             </Col>
           </Row>
           <Row className="text-center" type="flex" align="middle">

@@ -6,6 +6,8 @@ import TextFieldGroup from "../../../common/text-field-group";
 import { connect } from "react-redux";
 import { loginUser } from "../../../actions/authActions";
 
+import styles from "./Login.module.css";
+
 class Login extends Component {
   constructor() {
     super();
@@ -86,7 +88,7 @@ class Login extends Component {
             </Row>
             <Row className="mt-10">
               <Col span={24}>
-                <Link className="f-r" to="/register">
+                <Link className={`${styles["link-color"]} f-r`} to="/register">
                   Sign Up
                 </Link>
               </Col>

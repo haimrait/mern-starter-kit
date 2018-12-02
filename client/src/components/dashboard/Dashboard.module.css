@@ -1,0 +1,12 @@
+.title {
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 0px;
+  display: inline;
+}
+
+.col-wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
