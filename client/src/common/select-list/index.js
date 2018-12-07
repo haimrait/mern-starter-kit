@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Select } from "antd";
 
-import styles from "./SelectList.module.css";
-
 const Option = Select.Option;
 
 const SelectList = ({ className, options, defaultValue }) => {
