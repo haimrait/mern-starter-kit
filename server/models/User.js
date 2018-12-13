@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const schemaOptions = {
+  autoCreate: true,
+};
+
+
 // Create Schema
 const UserSchema = new Schema({
   name: {
