@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Layout, Dropdown, Avatar, Menu, Icon, Badge } from "antd";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { logoutUser } from "../../../actions/authActions";
+import { observer, inject } from "mobx-react";
 
 import styles from "./Header.module.css";
 
@@ -10,11 +9,11 @@ const { Header } = Layout;
 
 class NavBar extends Component {
   onLogoutClick = e => {
-    this.props.logoutUser();
+    this.props.authStore.logoutUser();
   };
 
   render() {
-    const { user } = this.props.auth;
+    const { user } = this.props.authStore;
 
     const menu = (
       <Menu>
@@ -49,15 +48,7 @@ class NavBar extends Component {
 }
 
 NavBar.propTypes = {
-  logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  authStore: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
-});
-
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(NavBar);
+export default inject(["authStore"])(observer(NavBar));

@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Layout, Menu, Icon } from "antd";
-import PropTypes from "prop-types";
 import { ReactComponent as ArchiveSVG } from "../../../img/icons/archive.svg";
-import { connect } from "react-redux";
-import { logoutUser } from "../../../actions/authActions";
 
 import styles from "./Sider.module.css";
 
@@ -55,16 +52,4 @@ class SideBar extends Component {
   }
 }
 
-SideBar.propTypes = {
-  logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
-  auth: state.auth
-});
-
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(SideBar);
+export default SideBar;

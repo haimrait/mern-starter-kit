@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "antd";
 import TextFieldGroup from "../../../common/text-field-group";
-import { connect } from "react-redux";
-import { loginUser } from "../../../actions/authActions";
+import { observer, inject } from "mobx-react";
 
 import styles from "./Login.module.css";
 
@@ -19,13 +18,13 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
+    if (this.props.authStore.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticated) {
+    if (nextProps.authStore.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
 
@@ -42,7 +41,7 @@ class Login extends Component {
       password: this.state.password
     };
 
-    this.props.loginUser(userData);
+    this.props.authStore.loginUser(userData);
   };
 
   onChange = e => {
@@ -101,19 +100,10 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  loginUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  authStore: PropTypes.object.isRequired,
+  errors: PropTypes.object
 };
-
-const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
-});
 
 const WrappedLogin = Form.create()(Login);
 
-export default connect(
-  mapStateToProps,
-  { loginUser }
-)(WrappedLogin);
+export default inject(["authStore"])(observer(WrappedLogin));

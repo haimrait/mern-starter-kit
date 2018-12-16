@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
+import { observer, inject } from "mobx-react";
 import { Row, Col, Button } from "antd";
 
 import styles from "./Landing.module.css";
 
 class Landing extends Component {
   componentDidMount() {
-    if (this.props.auth.isAuthenticated) {
+    if (this.props.authStore.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
   }
@@ -53,11 +53,7 @@ class Landing extends Component {
 }
 
 Landing.propTypes = {
-  auth: PropTypes.object.isRequired
+  authStore: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
-});
-
-export default connect(mapStateToProps)(Landing);
+export default inject(["authStore"])(observer(Landing));
