@@ -7,7 +7,7 @@ import styles from "./Landing.module.css";
 
 class Landing extends Component {
   componentDidMount() {
-    if (this.props.authStore.isAuthenticated) {
+    if (this.props.store.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
   }
@@ -18,10 +18,8 @@ class Landing extends Component {
         <div className={`${styles["dark-overlay"]} ${styles["landing-inner"]}`}>
           <Row className="text-center">
             <Col span={24}>
-              <h1 className={styles["site-name"]}>Avian</h1>
-              <p className={styles["site-desc"]}>
-                Avian is a multiple distribution channels manager for airlines.{" "}
-              </p>
+              <h1 className={styles["site-name"]}>Company</h1>
+              <p className={styles["site-desc"]}>Company Description. </p>
             </Col>
           </Row>
           <Row className="text-center" type="flex" align="middle">
@@ -53,7 +51,7 @@ class Landing extends Component {
 }
 
 Landing.propTypes = {
-  authStore: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired
 };
 
-export default inject(["authStore"])(observer(Landing));
+export default inject(["store"])(observer(Landing));

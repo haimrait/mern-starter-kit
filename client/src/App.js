@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
-import { decorate, observable } from "mobx";
 import { Provider } from "mobx-react";
-import AuthStore from "./stores/AuthStore"
+import RootStore from "./stores/RootStore";
 import RouteWithLayout from "./common/route-with-layout";
 import PrivateRoute from "./common/private-route";
 import MainLayout from "./components/layout/main-layout";
@@ -16,14 +15,11 @@ import Dashboard from "./components/dashboard";
 
 import "./App.css";
 
-decorate(AuthStore, { isAuthenticated: observable, user: observable });
-const authStore = new AuthStore();
-
 class App extends Component {
   render() {
-    debugger
+    debugger;
     return (
-      <Provider authStore={authStore}>
+      <Provider store={RootStore}>
         <Router>
           <Layout className="app">
             <Switch>

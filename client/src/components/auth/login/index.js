@@ -18,18 +18,18 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    if (this.props.authStore.isAuthenticated) {
+    if (this.props.store.authStore.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.authStore.isAuthenticated) {
+    if (nextProps.store.authStore.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
 
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+    if (nextProps.store.errorStore.errors) {
+      this.setState({ errors: nextProps.store.errorStore.errors });
     }
   }
 
@@ -41,7 +41,8 @@ class Login extends Component {
       password: this.state.password
     };
 
-    this.props.authStore.loginUser(userData);
+    debugger;
+    this.props.store.authStore.loginUser(userData);
   };
 
   onChange = e => {
@@ -100,10 +101,9 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  authStore: PropTypes.object.isRequired,
-  errors: PropTypes.object
+  store: PropTypes.object.isRequired
 };
 
 const WrappedLogin = Form.create()(Login);
 
-export default inject(["authStore"])(observer(WrappedLogin));
+export default inject(["store"])(observer(WrappedLogin));

@@ -20,7 +20,7 @@ class Register extends Component {
   }
 
   componentDidMount() {
-    if (this.props.authStore.isAuthenticated) {
+    if (this.props.store.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
   }
@@ -45,7 +45,7 @@ class Register extends Component {
       password2: this.state.password2
     };
 
-    this.props.authStore.registerUser(newUser, this.props.history);
+    this.props.store.registerUser(newUser, this.props.history);
   };
 
   render() {
@@ -116,8 +116,8 @@ class Register extends Component {
 }
 
 Register.propTypes = {
-  authStore: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired,
   errors: PropTypes.object
 };
 
-export default inject(["authStore"])(observer(withRouter(Register)));
+export default inject(["store"])(observer(withRouter(Register)));

@@ -1,12 +1,15 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import isEmpty from "../validation/is-empty";
+import isEmpty from "../../../validation/is-empty";
+import errorsStore from "../Error/ErrorStore";
 
 class AuthStore {
+  errorStore = null;
   isAuthenticated = false;
   user = {};
-  constructor() {
-    debugger;
+  constructor(authApi, errorStore) {
+    this.authApi = authApi;
+    this.errorStore = errorStore;
     // Check for token
     if (localStorage.jwtToken) {
       // Set auth token header auth
@@ -39,24 +42,18 @@ class AuthStore {
 
   // Register User
   registerUser = (userData, history) => {
-    debugger;
-    axios
-      .post("/api/users/register", userData)
+    this.authApi
+      .registerUser(userData)
       .then(res => history.push("/login"))
       .catch(err => {
-        debugger;
-        // dispatch({
-        //   type: GET_ERRORS,
-        //   payload: err.response.data
-        // })
+        this.errorStore.errors = err.response.data;
       });
   };
 
   // Login - Get User Token
   loginUser = userData => {
-    debugger;
-    axios
-      .post("/api/users/login", userData)
+    this.authApi
+      .loginUser(userData)
       .then(res => {
         // Save to localStorage
         const { token } = res.data;
@@ -71,10 +68,7 @@ class AuthStore {
       })
       .catch(err => {
         debugger;
-        // dispatch({
-        //   type: GET_ERRORS,
-        //   payload: err.response.data
-        // })
+        this.errorStore.errors = err.response.data;
       });
   };
 

@@ -1,10 +1,18 @@
-import ./
+import { decorate, observable } from "mobx";
+import AuthStore from "./ApplicationStores/Auth/AuthStore";
+import AuthApi from "../apis/Auth/AuthApi";
+import ErrorStore from "./ApplicationStores/Error/ErrorStore";
 
 class RootStore {
+  authStore = null;
+  errorStore = null;
   constructor() {
-    this.userStore = new UserStore(this);
-    this.todoStore = new TodoStore(this);
+    this.errorStore = new ErrorStore();
+    this.authStore = new AuthStore(new AuthApi(), this.errorStore);
   }
 }
 
-export default RootStore;
+decorate(AuthStore, { isAuthenticated: observable, user: observable });
+decorate(ErrorStore, { errors: observable });
+
+export default new RootStore();

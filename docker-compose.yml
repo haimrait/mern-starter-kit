@@ -9,6 +9,9 @@ services:
       context: ./nginx
     ports:
       - "8080:80"
+    links:
+      - api
+      - client
   api:
     build:
       dockerfile: Dockerfile.dev
@@ -19,6 +22,8 @@ services:
     environment:
       - MONGO_URI=mongodb://mongo:27017/cheburashka
       - SECRET_OR_KEY=cheburashka
+    links:
+      - mongo
   client:
     build:
       dockerfile: Dockerfile.dev

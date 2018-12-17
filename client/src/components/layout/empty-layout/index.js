@@ -16,12 +16,10 @@ class EmptyLayout extends Component {
           <Link className={styles["link-color"]} to="/">
             <div className={styles.header}>
               <img alt="logo" className={styles.logo} src={logo} />
-              <span className={styles.title}>Avian</span>
+              <span className={styles.title}>Company</span>
             </div>
           </Link>
-          <div className={styles.desc}>
-            Avian is a multiple distribution channels manager for airlines.
-          </div>
+          <div className={styles.desc}>Company Description</div>
         </div>
         <Content className={styles.content}>{this.props.children}</Content>
         <Footer />

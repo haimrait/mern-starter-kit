@@ -9,11 +9,11 @@ const { Header } = Layout;
 
 class NavBar extends Component {
   onLogoutClick = e => {
-    this.props.authStore.logoutUser();
+    this.props.store.logoutUser();
   };
 
   render() {
-    const { user } = this.props.authStore;
+    const { user } = this.props.store;
 
     const menu = (
       <Menu>
@@ -48,7 +48,7 @@ class NavBar extends Component {
 }
 
 NavBar.propTypes = {
-  authStore: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired
 };
 
-export default inject(["authStore"])(observer(NavBar));
+export default inject(["store"])(observer(NavBar));
