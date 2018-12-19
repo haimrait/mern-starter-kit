@@ -2,24 +2,26 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
 import { Provider } from "mobx-react";
-import RootStore from "./stores/RootStore";
+import rootStore from "./stores/RootStore";
 import RouteWithLayout from "./common/route-with-layout";
 import PrivateRoute from "./common/private-route";
 import MainLayout from "./components/layout/main-layout";
 import EmptyLayout from "./components/layout/empty-layout";
 import Landing from "./components/layout/landing";
 import Register from "./components/auth/register";
-import Login from "./components/auth/login";
+import LoginPage from "./ui/Login/containers/LoginPage";
 import NotFound from "./components/not-found";
 import Dashboard from "./components/dashboard";
 
 import "./App.css";
 
+// For easier debugging
+window._____APP_STATE_____ = rootStore;
+
 class App extends Component {
   render() {
-    debugger;
     return (
-      <Provider store={RootStore}>
+      <Provider store={rootStore}>
         <Router>
           <Layout className="app">
             <Switch>
@@ -34,7 +36,7 @@ class App extends Component {
                 exact
                 layout={EmptyLayout}
                 path="/login"
-                component={Login}
+                component={LoginPage}
               />
               <PrivateRoute
                 exact

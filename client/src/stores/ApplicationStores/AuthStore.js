@@ -1,15 +1,14 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import isEmpty from "../../../validation/is-empty";
-import errorsStore from "../Error/ErrorStore";
+import isEmpty from "../../validation/is-empty";
 
 class AuthStore {
-  errorStore = null;
   isAuthenticated = false;
   user = {};
-  constructor(authApi, errorStore) {
+
+  constructor(rootStore, authApi) {
     this.authApi = authApi;
-    this.errorStore = errorStore;
+    this.rootStore = rootStore;
     // Check for token
     if (localStorage.jwtToken) {
       // Set auth token header auth
@@ -46,7 +45,7 @@ class AuthStore {
       .registerUser(userData)
       .then(res => history.push("/login"))
       .catch(err => {
-        this.errorStore.errors = err.response.data;
+        this.rootStore.errorStore.setErrors(err.response.data);
       });
   };
 
@@ -67,8 +66,7 @@ class AuthStore {
         this.setCurrentUser(decoded);
       })
       .catch(err => {
-        debugger;
-        this.errorStore.errors = err.response.data;
+        this.rootStore.errorStore.setErrors(err.response.data);
       });
   };
 

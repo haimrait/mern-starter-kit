@@ -9,11 +9,11 @@ const { Header } = Layout;
 
 class NavBar extends Component {
   onLogoutClick = e => {
-    this.props.store.logoutUser();
+    this.props.store.authStore.logoutUser();
   };
 
   render() {
-    const { user } = this.props.store;
+    const { user } = this.props.store.authStore;
 
     const menu = (
       <Menu>

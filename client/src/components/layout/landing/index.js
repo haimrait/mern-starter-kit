@@ -7,7 +7,7 @@ import styles from "./Landing.module.css";
 
 class Landing extends Component {
   componentDidMount() {
-    if (this.props.store.isAuthenticated) {
+    if (this.props.store.authStore.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
   }

@@ -20,14 +20,14 @@ class Register extends Component {
   }
 
   componentDidMount() {
-    if (this.props.store.isAuthenticated) {
+    if (this.props.store.authStore.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+      this.setState({ errors: nextProps.store.errorStore.getErrors() });
     }
   }
 
@@ -45,11 +45,11 @@ class Register extends Component {
       password2: this.state.password2
     };
 
-    this.props.store.registerUser(newUser, this.props.history);
+    this.props.store.authStore.registerUser(newUser, this.props.history);
   };
 
   render() {
-    const { errors } = this.state;
+    const errors = this.props.errors;
 
     return (
       <Row className="register" type="flex" justify="center">
@@ -87,7 +87,7 @@ class Register extends Component {
               type="password"
               value={this.state.password2}
               onChange={this.onChange}
-              error={errors.password2}
+              error={this.props.store.errorStore.errors.password2}
             />
             <Row type="flex" justify="center" align="middle">
               <Col span={24}>
@@ -116,8 +116,7 @@ class Register extends Component {
 }
 
 Register.propTypes = {
-  store: PropTypes.object.isRequired,
-  errors: PropTypes.object
+  store: PropTypes.object.isRequired
 };
 
 export default inject(["store"])(observer(withRouter(Register)));
