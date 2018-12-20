@@ -5,15 +5,17 @@ import LoginView from "../components/LoginView";
 
 class LoginPage extends Component {
   componentDidMount() {
-    if (this.props.store.authStore.isAuthenticated) {
-      this.props.history.push("/dashboard");
-    }
+    debugger;
+    // if (this.props.store.authStore.isAuthenticated) {
+    //   this.props.history.push("/dashboard");
+    // }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.store.authStore.isAuthenticated) {
-      this.props.history.push("/dashboard");
-    }
+    debugger;
+    // if (nextProps.store.authStore.isAuthenticated) {
+    //   this.props.history.push("/dashboard");
+    // }
   }
 
   componentWillUnmount() {
@@ -22,6 +24,11 @@ class LoginPage extends Component {
   }
 
   render() {
+    debugger;
+    if (this.props.store.authStore.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+
     return (
       <LoginView
         onChange={this.props.store.loginStore.onChange}

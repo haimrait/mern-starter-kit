@@ -3,8 +3,8 @@ import jwt_decode from "jwt-decode";
 import isEmpty from "../../validation/is-empty";
 
 class AuthStore {
-  isAuthenticated = false;
   user = {};
+  isAuthenticated = false;
 
   constructor(rootStore, authApi) {
     this.authApi = authApi;
@@ -28,6 +28,10 @@ class AuthStore {
       }
     }
   }
+
+  // get isAuthenticated() {
+  //   return !isEmpty(this.user);
+  // }
 
   _setAuthToken = token => {
     if (token) {
@@ -72,8 +76,8 @@ class AuthStore {
 
   // Set logged in user
   setCurrentUser = decoded => {
-    this.isAuthenticated = !isEmpty(decoded);
     this.user = decoded;
+    this.isAuthenticated = !isEmpty(this.user);
   };
 
   // Log user out
