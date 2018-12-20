@@ -3,15 +3,15 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Layout } from "antd";
 import { Provider } from "mobx-react";
 import rootStore from "./stores/RootStore";
-import RouteWithLayout from "./common/route-with-layout";
-import PrivateRoute from "./common/private-route";
-import MainLayout from "./components/layout/main-layout";
-import EmptyLayout from "./components/layout/empty-layout";
-import Landing from "./components/layout/landing";
-import Register from "./components/auth/register";
-import LoginPage from "./ui/Login/containers/LoginPage";
-import NotFound from "./components/not-found";
-import Dashboard from "./components/dashboard";
+import RouteWithLayout from "./ui/common/components/route-with-layout";
+import PrivateRoute from "./ui/common/components/private-route";
+import MainLayout from "./ui/layout/containers/MainLayout";
+import EmptyLayout from "./ui/layout/containers/EmptyLayout";
+import LandingPage from "./ui/landing/containers/LandingPage";
+import RegisterPage from "./ui/register/containers/RegisterPage";
+import LoginPage from "./ui/login/containers/LoginPage";
+import NotFoundPage from "./ui/not-found/containers/NotFoundPage";
+import DashboardPage from "./ui/dashboard/containers/DashboardPage";
 
 import "./App.css";
 
@@ -25,12 +25,12 @@ class App extends Component {
         <Router>
           <Layout className="app">
             <Switch>
-              <Route exact path="/" component={Landing} />
+              <Route exact path="/" component={LandingPage} />
               <RouteWithLayout
                 exact
                 layout={EmptyLayout}
                 path="/register"
-                component={Register}
+                component={RegisterPage}
               />
               <RouteWithLayout
                 exact
@@ -42,13 +42,13 @@ class App extends Component {
                 exact
                 layout={MainLayout}
                 path="/dashboard"
-                component={Dashboard}
+                component={DashboardPage}
               />
               <RouteWithLayout
                 exact
                 layout={EmptyLayout}
                 path="*"
-                component={NotFound}
+                component={NotFoundPage}
               />
             </Switch>
           </Layout>

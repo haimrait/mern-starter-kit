@@ -16,6 +16,11 @@ class LoginPage extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.store.errorStore.clearErrors();
+    this.props.store.loginStore.clearStore();
+  }
+
   render() {
     return (
       <LoginView

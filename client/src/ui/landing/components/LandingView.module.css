@@ -1,0 +1,34 @@
+.landing {
+  position: relative;
+  background: url("../../../assets/showcase.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-bottom: -50px;
+}
+
+.landing-inner {
+  padding-top: 80px;
+}
+
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.site-desc {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #fff;
+}
+
+.site-name {
+  font-size: 4.5rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
