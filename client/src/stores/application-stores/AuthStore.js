@@ -29,10 +29,6 @@ class AuthStore {
     }
   }
 
-  // get isAuthenticated() {
-  //   return !isEmpty(this.user);
-  // }
-
   _setAuthToken = token => {
     if (token) {
       // Apply to every request
@@ -88,6 +84,8 @@ class AuthStore {
     this._setAuthToken(false);
     // Set current user to {} which will set isAuthenticated to false
     this.setCurrentUser({});
+    // Redirect to login
+    window.location.href = "/login";
   };
 }
 

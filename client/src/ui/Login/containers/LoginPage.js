@@ -5,15 +5,17 @@ import LoginView from "../components/LoginView";
 
 class LoginPage extends Component {
   componentDidMount() {
-    debugger;
+    // Moved to render because componentDidUpdate doesnt work
+    // debugger;
     // if (this.props.store.authStore.isAuthenticated) {
     //   this.props.history.push("/dashboard");
     // }
   }
 
-  componentWillReceiveProps(nextProps) {
-    debugger;
-    // if (nextProps.store.authStore.isAuthenticated) {
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // Mobx did not render this function for me :(
+    // debugger;
+    // if (this.props.store.authStore.isAuthenticated) {
     //   this.props.history.push("/dashboard");
     // }
   }
@@ -24,7 +26,6 @@ class LoginPage extends Component {
   }
 
   render() {
-    debugger;
     if (this.props.store.authStore.isAuthenticated) {
       this.props.history.push("/dashboard");
     }

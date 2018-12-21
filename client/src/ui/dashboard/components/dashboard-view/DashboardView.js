@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import { Row, Col } from "antd";
-import BoardSmallItem from "./BoardSmallItem";
-import SelectList from "../../common/components/select-list";
+import BoardSmallItem from "../board-small-item/BoardSmallItem";
 
 import styles from "./DashboardView.module.css";
 
@@ -12,15 +11,6 @@ class DashboardView extends PureComponent {
         <Row className="dashboard mb-20" type="flex" align="middle">
           <Col span={24} className={styles["col-wrapper"]}>
             <h1 className={styles["title"]}>Dashboard</h1>
-            <SelectList
-              className="f-r"
-              defaultValue={"This Week"}
-              options={[
-                { value: "week", text: "This Week" },
-                { value: "month", text: "This Month" },
-                { value: "year", text: "This Year" }
-              ]}
-            />
           </Col>
         </Row>
         <Row type="flex" justify="space-between">
