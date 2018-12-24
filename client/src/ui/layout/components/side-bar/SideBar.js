@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Menu, Icon } from "antd";
-import { ReactComponent as ArchiveSVG } from "../../../assets/icons/archive.svg";
+import { ReactComponent as ArchiveSVG } from "../../../../assets/icons/archive.svg";
 
 import styles from "./SideBar.module.css";
 

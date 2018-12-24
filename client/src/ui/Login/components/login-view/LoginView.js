@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import LoginForm from "./LoginForm";
+import LoginForm from "../login-form/LoginForm";
 import { Row, Col } from "antd";
 
 class LoginView extends PureComponent {

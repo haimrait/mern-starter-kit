@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
 import { PropTypes } from "prop-types";
-import EmptyLayoutView from "../components/EmptyLayoutView";
+import EmptyLayoutView from "../components/empty-layout-view/EmptyLayoutView";
 
 class EmptyLayout extends Component {
   render() {

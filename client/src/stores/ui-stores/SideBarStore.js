@@ -1,3 +1,5 @@
+import { decorate, observable, action } from "mobx";
+
 class SideBarStore {
   collapsed = false;
 
@@ -9,5 +11,10 @@ class SideBarStore {
     this.collapsed = isCollapsed;
   };
 }
+
+decorate(SideBarStore, {
+  collapsed: observable,
+  onCollapse: action
+});
 
 export default SideBarStore;

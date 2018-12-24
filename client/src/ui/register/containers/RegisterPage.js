@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
 import PropTypes from "prop-types";
-import RegisterView from "../components/RegisterView";
+import RegisterView from "../components/register-view/RegisterView";
 
 class RegisterPage extends Component {
   constructor() {

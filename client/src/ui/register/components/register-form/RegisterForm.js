@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Form, Button, Row, Col } from "antd";
-import TextFieldGroup from "../../common/components/text-field-group";
+import TextFieldGroup from "../../../common/components/text-field-group";
 
 import styles from "./RegisterForm.module.css";
 

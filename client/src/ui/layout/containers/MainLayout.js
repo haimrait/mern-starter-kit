@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
 import { PropTypes } from "prop-types";
-import MainLayoutView from "../components/MainLayoutView";
+import MainLayoutView from "../components/main-layout-view/MainLayoutView";
 
 class MainLayout extends Component {
   render() {

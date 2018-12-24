@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "antd";
-import Footer from "./Footer";
-import logo from "../../../assets/logo.svg";
+import Footer from "../footer/Footer";
+import logo from "../../../../assets/logo.svg";
 
 import styles from "./EmptyLayoutView.module.css";
 

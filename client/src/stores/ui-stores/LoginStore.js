@@ -1,3 +1,5 @@
+import { decorate, observable, action } from "mobx";
+
 class LoginStore {
   email = "";
   password = "";
@@ -26,5 +28,12 @@ class LoginStore {
     this.rootStore.authStore.loginUser(userData);
   };
 }
+
+decorate(LoginStore, {
+  email: observable,
+  password: observable,
+  onSubmit: action,
+  onChange: action
+});
 
 export default LoginStore;

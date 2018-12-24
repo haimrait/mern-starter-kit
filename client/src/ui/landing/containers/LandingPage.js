@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { observer, inject } from "mobx-react";
-import LandingView from "../components/LandingView";
+import LandingView from "../components/landing-view/LandingView";
 
 class Landing extends Component {
   componentDidMount() {

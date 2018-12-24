@@ -1,9 +1,9 @@
 import React, { PureComponent } from "react";
 import { PropTypes } from "prop-types";
 import { Layout } from "antd";
-import NavBar from "./NavBar";
-import SideBar from "./SideBar";
-import Footer from "./Footer";
+import NavBar from "../nav-bar/NavBar";
+import SideBar from "../side-bar/SideBar";
+import Footer from "../footer/Footer";
 
 import styles from "./MainLayoutView.module.css";
 

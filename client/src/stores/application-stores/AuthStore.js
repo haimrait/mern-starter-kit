@@ -1,4 +1,5 @@
 import axios from "axios";
+import { decorate, observable, action } from "mobx";
 import jwt_decode from "jwt-decode";
 import isEmpty from "../../validation/is-empty";
 
@@ -88,5 +89,14 @@ class AuthStore {
     window.location.href = "/login";
   };
 }
+
+decorate(AuthStore, {
+  isAuthenticated: observable,
+  user: observable,
+  registerUser: action,
+  loginUser: action,
+  setCurrentUser: action,
+  logoutUser: action
+});
 
 export default AuthStore;

@@ -1,3 +1,5 @@
+import { decorate, observable, action } from "mobx";
+
 class ErrorStore {
   errors = {};
 
@@ -13,5 +15,11 @@ class ErrorStore {
     this.setErrors({});
   };
 }
+
+decorate(ErrorStore, {
+  errors: observable,
+  clearErrors: action,
+  setErrors: action
+});
 
 export default ErrorStore;

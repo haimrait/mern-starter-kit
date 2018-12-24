@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
 import PropTypes from "prop-types";
-import LoginView from "../components/LoginView";
+import LoginView from "../components/login-view/LoginView";
 
 class LoginPage extends Component {
   componentDidMount() {

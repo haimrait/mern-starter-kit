@@ -1,4 +1,3 @@
-import { decorate, observable, action } from "mobx";
 import AuthStore from "./application-stores/AuthStore";
 import ErrorStore from "./application-stores/ErrorStore";
 import LoginStore from "./ui-stores/LoginStore";
@@ -11,6 +10,7 @@ class RootStore {
   errorStore = null;
   loginStore = null;
   sideBarStore = null;
+  registerStore = null;
 
   constructor() {
     this.errorStore = new ErrorStore(this);
@@ -22,41 +22,5 @@ class RootStore {
 }
 
 const store = new RootStore();
-
-decorate(store.authStore, {
-  isAuthenticated: observable,
-  user: observable,
-  registerUser: action,
-  loginUser: action,
-  setCurrentUser: action,
-  logoutUser: action
-});
-
-decorate(store.errorStore, {
-  errors: observable,
-  clearErrors: action,
-  setErrors: action
-});
-
-decorate(store.sideBarStore, {
-  collapsed: observable,
-  onCollapse: action
-});
-
-decorate(store.loginStore, {
-  email: observable,
-  password: observable,
-  onSubmit: action,
-  onChange: action
-});
-
-decorate(store.registerStore, {
-  email: observable,
-  password: observable,
-  password2: observable,
-  name: observable,
-  onSubmit: action,
-  onChange: action
-});
 
 export default store;

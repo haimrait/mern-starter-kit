@@ -1,3 +1,5 @@
+import { decorate, observable, action } from "mobx";
+
 class RegisterStore {
   email = "";
   password = "";
@@ -32,5 +34,14 @@ class RegisterStore {
     this.rootStore.authStore.registerUser(newUser, history);
   };
 }
+
+decorate(RegisterStore, {
+  email: observable,
+  password: observable,
+  password2: observable,
+  name: observable,
+  onSubmit: action,
+  onChange: action
+});
 
 export default RegisterStore;
