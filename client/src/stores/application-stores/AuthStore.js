@@ -7,18 +7,18 @@ class AuthStore {
   user = {};
   isAuthenticated = false;
 
-  constructor(rootStore, authApi) {
-    this.authApi = authApi;
+  constructor(rootStore, authService) {
+    this.authService = authService;
     this.rootStore = rootStore;
     // Check for token
-    if (localStorage.jwtToken) {
+    console.log(localStorage);
+    if (localStorage.getItem("jwtToken")) {
       // Set auth token header auth
       setAuthToken(localStorage.jwtToken);
       // Decode token and get user info and exp
       const decoded = jwt_decode(localStorage.jwtToken);
       // Set user and isAuthenticated
       this.setCurrentUser(decoded);
-
       // Check for expired token
       const currentTime = Date.now() / 1000;
       if (decoded.exp < currentTime) {
@@ -32,7 +32,7 @@ class AuthStore {
 
   // Register User
   registerUser = (userData, history) => {
-    this.authApi
+    this.authService
       .registerUser(userData)
       .then(res => history.push("/login"))
       .catch(err => {
@@ -42,7 +42,7 @@ class AuthStore {
 
   // Login - Get User Token
   loginUser = userData => {
-    this.authApi
+    this.authService
       .loginUser(userData)
       .then(res => {
         // Save to localStorage
