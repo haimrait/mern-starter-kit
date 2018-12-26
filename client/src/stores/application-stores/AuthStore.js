@@ -1,7 +1,7 @@
-import axios from "axios";
 import { decorate, observable, action } from "mobx";
 import jwt_decode from "jwt-decode";
-import isEmpty from "../../validation/is-empty";
+import setAuthToken from "../../utils/setAuthToken";
+import { isEmpty } from "lodash";
 
 class AuthStore {
   user = {};
@@ -13,7 +13,7 @@ class AuthStore {
     // Check for token
     if (localStorage.jwtToken) {
       // Set auth token header auth
-      this._setAuthToken(localStorage.jwtToken);
+      setAuthToken(localStorage.jwtToken);
       // Decode token and get user info and exp
       const decoded = jwt_decode(localStorage.jwtToken);
       // Set user and isAuthenticated
@@ -29,16 +29,6 @@ class AuthStore {
       }
     }
   }
-
-  _setAuthToken = token => {
-    if (token) {
-      // Apply to every request
-      axios.defaults.headers.common["Authorization"] = token;
-    } else {
-      // Delete auth header
-      delete axios.defaults.headers.common["Authorization"];
-    }
-  };
 
   // Register User
   registerUser = (userData, history) => {
@@ -60,7 +50,7 @@ class AuthStore {
         // Set token to ls
         localStorage.setItem("jwtToken", token);
         // Set token to Auth header
-        this._setAuthToken(token);
+        setAuthToken(token);
         // Decode token to get user data
         const decoded = jwt_decode(token);
         // Set current user
@@ -82,7 +72,7 @@ class AuthStore {
     // Remove token from localStorage
     localStorage.removeItem("jwtToken");
     // Remove auth header for future requests
-    this._setAuthToken(false);
+    setAuthToken(false);
     // Set current user to {} which will set isAuthenticated to false
     this.setCurrentUser({});
     // Redirect to login

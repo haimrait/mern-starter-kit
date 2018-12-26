@@ -19,6 +19,10 @@ import "./App.css";
 window._____APP_STATE_____ = rootStore;
 
 class App extends Component {
+  componentDidMount() {
+    rootStore.windowSizeStore.setWindow();
+  }
+
   render() {
     return (
       <Provider store={rootStore}>

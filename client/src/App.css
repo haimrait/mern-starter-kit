@@ -22,6 +22,10 @@
   margin-bottom: 20px;
 }
 
+.mr-0 {
+  margin-right: 0px;
+}
+
 .mr-3 {
   margin-right: 3px;
 }
