@@ -1,5 +1,5 @@
 const Validator = require("validator");
-import { isEmpty } from "lodash";
+const isEmpty = require("./is-empty");
 
 module.exports = function validateLoginInput(data) {
   let errors = {};

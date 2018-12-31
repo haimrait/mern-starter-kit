@@ -5,7 +5,6 @@ const passport = require("passport");
 const path = require("path");
 
 const users = require("./routes/api/users");
-const channels = require("./routes/api/channels");
 
 const app = express();
 
@@ -33,7 +32,6 @@ require("./config/passport")(passport);
 
 // Use Routes
 app.use("/users", users);
-app.use("/channels", channels);
 
 // Server static assets if in profuction
 // if (process.env.NODE_ENV === "production") {
